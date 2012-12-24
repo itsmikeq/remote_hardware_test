@@ -1,3 +1,13 @@
+Subdomains based on:
+http://railscasts.com/episodes/221-subdomains-in-rails-3
+
+Current SubDomains: 
+/api
+/results
+/users
+
+
+
 RECIPES
 ["controllers", "core", "email", "extras", "frontend", "gems", "git", "init", "models", "prelaunch", "railsapps", "readme", "routes", "saas", "setup", "testing", "views"]
 PREFERENCES
