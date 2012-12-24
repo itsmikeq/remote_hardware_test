@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-RemoteHardwareTest::Application.config.secret_token = '77159d3875df548edf6eaac0bb0d19b9d9fbdb8f1edfcc926ca1c3be33d54e4d89160123e5b2167ffbfa0cee509ea67818e60eb1b3dd0530946a03f99cf05f63'
+RemoteHardwareTest::Application.config.secret_token = 'c385703cda40f5c381530246c970634658f296affda5efd890be5c45d50b83c6e4532765c135d8c9352a676e5aef2a60bee2104e9eb09ee808e1c7eef33f3713'
