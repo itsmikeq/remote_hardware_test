@@ -6,6 +6,15 @@ class Ability
     if user.has_role? :admin
       can :manage, :all
     end
+    if user.has_role? :global_admin
+      can :manage, :all
+    end
+    if user.has_role? :customer_admin 
+      can :manage, :customer_devices, :customer => user.company 
+    end
+    if user.has_role? :device_admin
+      can :manage, Devices
+    end
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)

@@ -1,4 +1,8 @@
 RemoteHardwareTest::Application.routes.draw do
+  resources :devices
+
+  resources :companies
+
   authenticated :user do
     root :to => 'home#index'
   end
