@@ -52,4 +52,9 @@ RemoteHardwareTest::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
   # Paperclip.options[:command_path] = "/usr/local/bin/"
+  config.paperclip_defaults = {:storage => :fog, 
+    :fog_credentials => {:provider => "Local", :local_root => "#{Rails.root}/public"}, 
+    :fog_directory => "uploads", :fog_host => "localhost"}
+
+  
 end

@@ -7,6 +7,6 @@ class CreateUploads < ActiveRecord::Migration
       t.timestamps
     end
   end
-  add_index(:uploads, [ :name, :company_id ])
+  
 
 end

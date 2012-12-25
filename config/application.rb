@@ -6,13 +6,14 @@ require "action_controller/railtie"
 require "action_mailer/railtie"
 require "active_resource/railtie"
 require "sprockets/railtie"
+
 # require "rails/test_unit/railtie"
 
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
   Bundler.require(*Rails.groups(:assets => %w(development test)))
-  # If you want your assets lazily compiled in production, use this line
-  # Bundler.require(:default, :assets, Rails.env)
+# If you want your assets lazily compiled in production, use this line
+# Bundler.require(:default, :assets, Rails.env)
 end
 
 module RemoteHardwareTest
@@ -20,11 +21,10 @@ module RemoteHardwareTest
 
     # don't generate RSpec tests for views and helpers
     config.generators do |g|
-      
+
       g.test_framework :rspec, fixture: true
       g.fixture_replacement :factory_girl
-      
-      
+
       g.view_specs false
       g.helper_specs false
     end
@@ -36,7 +36,6 @@ module RemoteHardwareTest
     # Custom directories with classes and modules you want to be autoloadable.
     # config.autoload_paths += %W(#{config.root}/extras)
     config.autoload_paths += %W(#{config.root}/lib)
-
 
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
@@ -78,5 +77,13 @@ module RemoteHardwareTest
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+    # config.middleware.insert_before(
+    # ActionController::Session::CookieStore,
+    # FlashSessionCookieMiddleware,
+    # ActionController::Base.session_options[:key]
+    # )
+    %w(observers sweepers mailers middleware).each do |dir|
+      config.autoload_paths << "#{Rails.root}/lib/#{dir}"
+    end
   end
 end
