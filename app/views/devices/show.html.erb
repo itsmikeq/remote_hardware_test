@@ -9,6 +9,10 @@
   <b>Function:</b>
   <%= @device.function %>
 </p>
+<p>
+  <b>File:</b>
+  <%= Upload.find(@device.upload_id).name %>
+</p>
 
 <p>
   <b>Company:</b>

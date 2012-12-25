@@ -1,0 +1,13 @@
+<%= simple_form_for(@upload) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.input :file_location %>
+    <%= f.select( :company_id, Company.all.collect {|c| [c.name, c.id]}, {:include_blank => 'None'})%>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

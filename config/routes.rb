@@ -1,4 +1,6 @@
 RemoteHardwareTest::Application.routes.draw do
+  resources :uploads
+
   resources :devices
 
   resources :companies

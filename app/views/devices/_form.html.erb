@@ -4,8 +4,8 @@
   <div class="form-inputs">
     <%= f.input :name %>
     <%= f.input :function %>
-    <%= f.select( :company_id, Company.all.collect {|c| [c.name, c.id]}, {:include_blank => 'None'})%>
-    
+    <%= f.select( :company_id, Company.all.collect {|c| [c.name, c.id]}, {:include_blank => 'None'})%><br />
+    <%= f.select( :upload_id, Upload.all.collect {|u| [u.name, u.id]}, {:include_blank => 'None'})%>
 
   </div>
 

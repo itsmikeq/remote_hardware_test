@@ -9,7 +9,13 @@
 # See http://railsapps.github.com/rails-environment-variables.html
 puts "Creating test company"
 Company.find_or_create_by_name :name => "Test Customer"
-
+# Can be one of http(s)://some/url
+# OR
+# /local/file/path
+Upload.find_or_create_by_name(:name => "Test Upload",
+:file_location => "http://aospx.googlecode.com/files/aospX-1.0.0-BR7-DHD.zip",
+:company_id => Company.all.first
+)
 puts 'ROLES'
 YAML.load_file("#{Rails.root}/config/roles.yml").each do |role|
   Role.find_or_create_by_name({ :name => role }, :without_protection => true)
@@ -20,15 +26,15 @@ admin_username = "admin"
 admin_email = "memikequinn@gmail.com"
 admin_password = "password"
 
-user = User.find_or_create_by_email( :name => admin_username.dup, 
-  :email => admin_email.dup, 
-  :password => admin_password.dup, 
-  :password_confirmation => admin_password.dup,
-  :company_id => Company.all.first)
+user = User.find_or_create_by_email( :name => admin_username.dup,
+:email => admin_email.dup,
+:password => admin_password.dup,
+:password_confirmation => admin_password.dup,
+:company_id => Company.all.first)
 puts 'user: ' << user.name
 user.add_role :admin
 puts "Creating test Device"
-Device.find_or_create_by_name( :name => "Test Device", 
-  :function => "Testing",
-  :company_id => Company.all.first)
+Device.find_or_create_by_name( :name => "Test Device",
+:function => "Testing",
+:company_id => Company.all.first)
 
