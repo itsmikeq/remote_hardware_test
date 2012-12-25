@@ -20,9 +20,15 @@ admin_username = "admin"
 admin_email = "memikequinn@gmail.com"
 admin_password = "password"
 
-user = User.find_or_create_by_email :name => admin_username.dup, :email => admin_email.dup, :password => admin_password.dup, :password_confirmation => admin_password.dup
+user = User.find_or_create_by_email( :name => admin_username.dup, 
+  :email => admin_email.dup, 
+  :password => admin_password.dup, 
+  :password_confirmation => admin_password.dup,
+  :company_id => Company.all.first)
 puts 'user: ' << user.name
 user.add_role :admin
 puts "Creating test Device"
-Device.find_or_create_by_name :name => "Test Device", :function => "Testing"
+Device.find_or_create_by_name( :name => "Test Device", 
+  :function => "Testing",
+  :company_id => Company.all.first)
 

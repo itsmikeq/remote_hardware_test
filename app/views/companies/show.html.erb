@@ -5,6 +5,14 @@
   <%= @company.name %>
 </p>
 
+  <b>Devices:</b>
+<%@company.devices.each do |device|%>
+<p>
+  <%= device.name %> | <%= link_to 'Edit', edit_device_path(device) %> 
+  
+</p>
+<%end%>
+
 
 <%= link_to 'Edit', edit_company_path(@company) %> |
 <%= link_to 'Back', companies_path %>
