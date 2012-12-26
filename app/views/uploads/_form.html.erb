@@ -3,11 +3,19 @@
 
 <div class="form-inputs">
 	<%= f.input :name %>
+	OS Selection (web URL/Upload)
+	<br>
 	<%= f.input :file_location %>
+	<%= f.input :os, :input_html => { :class => 'form-' } %>
+	<% if current_user.has_role? :admin %>
+	<p>
+		Company
+	</p>
 	<%= f.select( :company_id, Company.all.collect {|c| [c.name, c.id]}, {:include_blank => 'None'})%>
-	<%= f.input :os %>
 </div>
-
+<%else%>
+ 	<%params(:upload).merge(:company_id => current_user.company_id)%>
+<%end%>
 <div class="form-actions">
 	<%= f.button :submit %>
 </div>

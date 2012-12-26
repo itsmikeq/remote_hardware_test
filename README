@@ -1,6 +1,22 @@
 Remote Hardware Test
 ========================
 
+Goal: To upload an Android-based OS, load it onto a device via ADB and run any tests/install packages, etc.
+
+
+TODOs:
+  *Add scope to users/companies so they only see what they're supposed to
+
+Roadmap: 
+  *Create Workflow for adding new devices/OS's/etc
+  *Add uploads for the OS's.
+  *Add scope for security (See TODOs)
+  *Add ADB start/stop
+  *Add ADB IO
+  **At first the ability to watch results (even delayed), then the full interactive ability
+  *Add LXC Containers for Multiple ADB sessions per system
+  
+
 This application was generated with the rails_apps_composer gem:
 https://github.com/RailsApps/rails_apps_composer
 provided by the RailsApps Project:

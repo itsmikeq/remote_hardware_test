@@ -1,4 +1,36 @@
 <h3>Home</h3>
-<% @users.each do |user| %>
-  <p>User: <%=link_to user.name, user %></p>
+<% if user_signed_in? %>
+<li>
+	<p>
+		User Profile: <%= link_to current_user.name, current_user %>
+	</p>
+	<div>
+		<p>
+			<b>Devices:</b>
+		</p>
+		<%unless @devices.nil?%>
+		<%@devices.each do |device|%>
+		<%= device.name%>
+		<%end%>
+		<%else%>
+		No Devices
+		<%end%>
+	</div>
+	<br />
+	<div>
+		<p>
+			<b> Uploads: </b>
+		</p>
+		<%unless @uploads.nil?%>
+		<%@uploads.each do |upload|%>
+		Name: <%= upload.name%> | 
+		Size:
+		<%= upload.os_file_size%>
+		<br />
+		<%end%>
+		<%else%>
+		No Uploads
+		<%end%>
+	</div>
+</li>
 <% end %>
