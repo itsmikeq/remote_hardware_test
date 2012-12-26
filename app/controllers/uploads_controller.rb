@@ -2,7 +2,11 @@ class UploadsController < ApplicationController
   # GET /uploads
   # GET /uploads.json
   def index
-    @uploads = Upload.all
+    if current_user.has_role? :admin 
+      @uploads = Upload.all
+    else
+      @uploads = Upload.where("company_id = #{current_user.company_id}")
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -41,7 +45,9 @@ class UploadsController < ApplicationController
   # POST /uploads.json
   def create
     @upload = Upload.new(params[:upload])
-
+    unless current_user.has_role? :admin
+      @upload.company_id = current_user.company
+    end
     respond_to do |format|
       if @upload.save
         format.html { redirect_to @upload, notice: 'Upload was successfully created.' }

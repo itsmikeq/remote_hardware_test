@@ -1,5 +1,8 @@
-<h1>Listing devices</h1>
-
+<% if current_user.has_role? :admin%>
+<h1>Listing devices for All Companies</h1>
+<%else%>
+<h1>Listing devices for <%=current_user.company.name%></h1>
+<%end%>
 <table border="1">
   <tr>
     <th>Name</th>

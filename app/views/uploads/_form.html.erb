@@ -14,7 +14,8 @@
 	<%= f.select( :company_id, Company.all.collect {|c| [c.name, c.id]}, {:include_blank => 'None'})%>
 </div>
 <%else%>
- 	<%params(:upload).merge(:company_id => current_user.company_id)%>
+ 	<% #:company_id = current_user.company_id)
+ 	%>
 <%end%>
 <div class="form-actions">
 	<%= f.button :submit %>

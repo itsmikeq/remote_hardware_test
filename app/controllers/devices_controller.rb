@@ -2,7 +2,11 @@ class DevicesController < ApplicationController
   # GET /devices
   # GET /devices.json
   def index
-    @devices = Device.all
+    if current_user.has_role? :admin
+      @devices = Device.all
+    else
+      @devices = Device.where("company_id = #{current_user.company_id}")
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -41,6 +45,12 @@ class DevicesController < ApplicationController
   # POST /devices.json
   def create
     @device = Device.new(params[:device])
+    puts "Device Params: #{params[:device]}"
+    if @device.company.nil?
+      @device.company = current_user.company
+    end
+    puts "Current_user.company = #{current_user.company_id}"
+    
 
     respond_to do |format|
       if @device.save

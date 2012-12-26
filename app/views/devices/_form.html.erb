@@ -4,8 +4,10 @@
   <div class="form-inputs">
     <%= f.input :name %>
     <%= f.input :function %>
+    <%if current_user.has_role? :admin%>
     Company<br />
     <%= f.select( :company_id, Company.all.collect {|c| [c.name, c.id]}, {:include_blank => 'None'})%><br />
+    <%end%>
     Associated Upload File<br />
     <%= f.select( :upload_id, Upload.all.collect {|u| [u.name, u.id]}, {:include_blank => 'None'})%>
 
