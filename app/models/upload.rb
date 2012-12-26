@@ -8,7 +8,7 @@ class Upload < ActiveRecord::Base
   belongs_to :company
   has_attached_file :os, :storage => :filesystem,
    :path => "uploads/paperclip_uploads/:attachment/:id/:style/:basename.:extension"
-  validates_attachment :os, :presence => true,
+  validates_attachment :os,
     :size => { :in => 0..10.gigabytes }
   # TODO: Add scope for by device:
   # scope :by_company, (lambda do |company|
