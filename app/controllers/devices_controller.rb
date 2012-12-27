@@ -5,7 +5,11 @@ class DevicesController < ApplicationController
     if current_user.has_role? :admin
       @devices = Device.all
     else
-      @devices = Device.where("company_id = #{current_user.company_id}")
+      unless current_user.company_id.nil?
+        @devices = Device.where("company_id = #{current_user.company_id}")
+      else
+        @devices = nil
+      end
     end
 
     respond_to do |format|
@@ -29,7 +33,13 @@ class DevicesController < ApplicationController
   # GET /devices/new.json
   def new
     @device = Device.new
-
+    puts "Device Session: #{session.inspect}"
+    if session[:follow_workflow] == true
+      puts "Following Workflow"
+    else
+      puts "NOT following workflow"
+    end
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @device }
@@ -44,16 +54,23 @@ class DevicesController < ApplicationController
   # POST /devices
   # POST /devices.json
   def create
-    @device = Device.new(params[:device])
-    puts "Device Params: #{params[:device]}"
-    if @device.company.nil?
-      @device.company = current_user.company
+    if session[:follow_workflow] == true
+      # puts "Merging params with session: #{session.inspect}"
+      params[:device][:upload_id] = Upload.find(session[:workflow_upload])
+      # puts "NEW params: #{params.inspect}"
+    # else
+      # puts "NOT following workflow in device"
     end
-    puts "Current_user.company = #{current_user.company_id}"
+    @device = Device.new(params[:device])
     
-
+    # puts "Device Params: #{params[:device]}"
+    if @device.company.nil?
+      @device.company = current_user.company unless current_user.has_role? :admin
+    end
+    # puts "Current_user.company = #{current_user.company_id}"
     respond_to do |format|
       if @device.save
+        session[:follow_workflow] = nil
         format.html { redirect_to @device, notice: 'Device was successfully created.' }
         format.json { render json: @device, status: :created, location: @device }
       else
@@ -61,6 +78,8 @@ class DevicesController < ApplicationController
         format.json { render json: @device.errors, status: :unprocessable_entity }
       end
     end
+    # End of workflow
+    current_user.follow_workflow(session,false)
   end
 
   # PUT /devices/1

@@ -27,4 +27,4 @@ gem "binding_of_caller", ">= 0.6.8", :group => :development
 gem "ruby-openid", ">= 2.2.2"
 gem "foreigner"
 gem "paperclip", "~> 3.0"
-
+gem "workflow", "~> 0.8.6"

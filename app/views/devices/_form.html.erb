@@ -1,19 +1,28 @@
 <%= simple_form_for(@device) do |f| %>
-  <%= f.error_notification %>
+<%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :name %>
-    <%= f.input :function %>
-    <%if current_user.has_role? :admin%>
-    Company<br />
-    <%= f.select( :company_id, Company.all.collect {|c| [c.name, c.id]}, {:include_blank => 'None'})%><br />
-    <%end%>
-    Associated Upload File<br />
-    <%= f.select( :upload_id, Upload.all.collect {|u| [u.name, u.id]}, {:include_blank => 'None'})%>
+<div class="form-inputs">
+	<%= f.input :name %>
+	<%= f.input :function %>
+	<%if !session[:follow_workflow] == true%>
+	<%if current_user.has_role? :admin%>
+	Company
+	<br />
+	<%= f.select( :company_id, Company.all.collect {|c| [c.name, c.id]}, {:include_blank => 'None'})%>
+	<br />
+	<%end%>
+	Associated Upload File
+	<br />
+	<%unless current_user.has_role? :admin%>
+	<%= f.select( :upload_id, current_user.company.uploads.collect {|u| [u.name, u.id]}, {:include_blank => 'None'})%>
+	<%else%>
+	
+	<%= f.select( :upload_id, Upload.all.collect {|u| [u.name, u.id]}, {:include_blank => 'None'})%>
+	<%end%>
+	<%end%>
+</div>
 
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+<div class="form-actions">
+	<%= f.button :submit %>
+</div>
 <% end %>

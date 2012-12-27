@@ -1,7 +1,7 @@
 class Upload < ActiveRecord::Base
   attr_accessible :company_id, :name, :file_location, :file_location_file_name, :os
   # Virtual attributes
-  attr_accessor :file_location_file_name, :file_location, :current_user
+  attr_accessor :file_location_file_name, :file_location
   # has_one :company
   has_and_belongs_to_many :devices
   has_many :users #, :through => :company
@@ -22,7 +22,9 @@ class Upload < ActiveRecord::Base
   
   private
   def check_and_get_http_file
-    puts "Will call download on #{self.name} here if self.file_location like http(s)/ftp/etc."
+    if Rails.env == "development"
+      puts "Will call download on #{self.name} here if self.file_location like http(s)/ftp/etc."
+    end
   end
 end
 

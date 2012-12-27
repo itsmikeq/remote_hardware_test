@@ -28,6 +28,11 @@ ActiveRecord::Schema.define(:version => 20121226192547) do
     t.integer  "upload_id"
   end
 
+  create_table "devices_uploads", :id => false, :force => true do |t|
+    t.integer "device_id"
+    t.integer "upload_id"
+  end
+
   create_table "roles", :force => true do |t|
     t.string   "name"
     t.integer  "resource_id"
