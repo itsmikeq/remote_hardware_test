@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121226192547) do
+ActiveRecord::Schema.define(:version => 20121228033228) do
+
+  create_table "adb_device_tests", :force => true do |t|
+    t.string   "name"
+    t.text     "script"
+    t.integer  "device_id"
+    t.integer  "upload_id"
+    t.integer  "company_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "companies", :force => true do |t|
     t.string   "name"

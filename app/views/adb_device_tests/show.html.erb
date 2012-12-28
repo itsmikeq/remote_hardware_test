@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @adb_device_test.name %>
+</p>
+
+<p>
+  <b>Script:</b>
+  <%= # RDiscount.new(begin;@adb_device_test.script;end).to_html
+  raw @adb_device_test.script.html_safe 
+  %>
+  
+</p>
+
+<p>
+  <b>Device:</b>
+  <%= @adb_device_test.device_id %>
+</p>
+
+<p>
+  <b>Upload:</b>
+  <%= @adb_device_test.upload_id %>
+</p>
+
+<p>
+  <b>Company:</b>
+  <%= @adb_device_test.company_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_adb_device_test_path(@adb_device_test) %> |
+<%= link_to 'Back', adb_device_tests_path %>

@@ -1,4 +1,6 @@
 RemoteHardwareTest::Application.routes.draw do
+  resources :adb_device_tests
+
   resources :uploads
 
   resources :devices

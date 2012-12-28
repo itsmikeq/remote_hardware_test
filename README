@@ -3,18 +3,19 @@ Remote Hardware Test
 
 Goal: To upload an Android-based OS, load it onto a device via ADB and run any tests/install packages, etc.
 
+Requirements: ADB, Linux or OSX, A device to test with (Jailbroken Android device for example)
 
-TODOs:
-  *Add scope to users/companies so they only see what they're supposed to
-
-Roadmap: 
-  *Create Workflow for adding new devices/OS's/etc
-  *Add uploads for the OS's.
-  *Add scope for security (See TODOs)
-  *Add ADB start/stop
-  *Add ADB IO
-  **At first the ability to watch results (even delayed), then the full interactive ability
-  *Add LXC Containers for Multiple ADB sessions per system
+ Roadmap: 
+  * Create Workflow for adding new devices/OS's/etc (DONE)
+  * Add uploads for the OS's. (DONE)
+  * Add scope for security (DONE)
+  * Add testing/scripting feature
+  **Add scripting WYSIWYG Editor
+  ***https://github.com/spohlenz/tinymce-rails
+  * Add ADB start/stop
+  * Add ADB IO
+   ** At first the ability to watch results (even delayed), then the full interactive ability
+  * Add LXC Containers for Multiple ADB sessions per system
   
 
 This application was generated with the rails_apps_composer gem:

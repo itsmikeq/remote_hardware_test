@@ -1,0 +1,29 @@
+<%= simple_form_for(@adb_device_test) do |f| %>
+<%= f.error_notification %>
+
+<div class="form-inputs">
+	<%= f.input :name %>
+	<%= f.input :script %>
+	<br />
+	Device<p></p>
+	<%= f.select(:device_id, current_user.devices.collect {|u| [u.name, u.id]}, {:include_blank => 'None'}) %>
+	<br />
+	Upload<p></p>
+	<%unless current_user.has_role? :admin%>
+	<%= f.select( :upload_id, current_user.uploads.collect {|u| [u.name, u.id]}, {:include_blank => 'None'})%>
+	<%else%>
+	<%= f.select( :upload_id, Upload.all.collect {|u| [u.name, u.id]}, {:include_blank => 'None'})%>
+	<%end%>
+<br />
+	<%if current_user.has_role? :admin%>
+	Company<p></p>
+	<%= f.select( :company_id, Company.all.collect {|c| [c.name, c.id]}, {:include_blank => 'None'})%>
+	<br />
+	<%end%>
+
+</div>
+
+<div class="form-actions">
+	<%= f.button :submit %>
+</div>
+<% end %>
