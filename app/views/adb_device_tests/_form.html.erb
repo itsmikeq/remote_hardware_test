@@ -1,9 +1,10 @@
 <%= simple_form_for(@adb_device_test) do |f| %>
 <%= f.error_notification %>
+<%= tinymce %>
 
 <div class="form-inputs">
-	<%= f.input :name %>
-	<%= f.input :script %>
+	<%= f.input :name%>
+	<%= f.input :script,:input_html => { :class =>'tinymce' }	%>
 	<br />
 	Device<p></p>
 	<%= f.select(:device_id, current_user.devices.collect {|u| [u.name, u.id]}, {:include_blank => 'None'}) %>

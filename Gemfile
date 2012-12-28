@@ -33,3 +33,6 @@ gem 'highlight', :require => 'simplabs/highlight'
 gem "coderay"
 gem "rdiscount"
 gem "ADB"
+gem 'tinymce-rails'
+gem 'tinymce-rails-langs'
+

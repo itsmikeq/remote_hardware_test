@@ -14,7 +14,7 @@ class AdbDeviceTestsController < ApplicationController
   # GET /adb_device_tests/1.json
   def show
     @adb_device_test = AdbDeviceTest.find(params[:id])
-    @adb_device_test.script = AdbDeviceTest.highlight(AdbDeviceTest.find(params[:id]).script)
+    # @adb_device_test.script = AdbDeviceTest.highlight(AdbDeviceTest.find(params[:id]).script)
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @adb_device_test }
