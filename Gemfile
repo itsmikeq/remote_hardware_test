@@ -32,7 +32,8 @@ gem "paperclip", "~> 3.0"
 gem 'highlight', :require => 'simplabs/highlight'
 gem "coderay"
 gem "rdiscount"
-gem "ADB"
+gem "android-adb", :git => "git://github.com/nicstrong/android-adb.git"
+gem 'ADB'
 gem 'tinymce-rails'
 gem 'tinymce-rails-langs'
 

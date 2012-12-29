@@ -80,4 +80,21 @@ class AdbDeviceTestsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def start
+    puts "#{params.inspect}"
+    # TODO: Check if user has permission
+    @adb_device_test = AdbDeviceTest.find(params[:id])
+    if (!(current_user.has_role?(:device_admin)||current_user.has_role?(:admin)))
+      render 401
+    end
+    flash[:notice] = "Started.  Available Devices: #{@adb_device_test.devices}"
+    # @output = `adb shell #{@adb_device_test.script}`
+    @adb_device_test.shell(@adb_device_test.script)
+    redirect_to 'command_output' && return
+    respond_to do |format|
+      format.html { redirect_to adb_device_tests_url }
+      format.json { head :no_content }
+    end
+  end
 end

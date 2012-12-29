@@ -1,27 +1,32 @@
 <h1>Listing adb_device_tests</h1>
 
 <table border="1">
-  <tr>
-    <th>Name</th>
-    <th>Device</th>
-    <th>Upload</th>
-    <th>Company</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+	<tr>
+		<th>Name</th>
+		<th>Device</th>
+		<th>Upload</th>
+		<th>Company</th>
+		<th>Start ADB Server</th>
+		<th></th>
+		<th></th>
+		<th></th>
+	</tr>
 
-<% @adb_device_tests.each do |adb_device_test| %>
-  <tr>
-    <td><%= adb_device_test.name %></td>
-    <td><%= adb_device_test.device.name %></td>
-    <td><%= adb_device_test.upload.name %></td>
-    <td><%= adb_device_test.company.name %></td>
-    <td><%= link_to 'Show', adb_device_test %></td>
-    <td><%= link_to 'Edit', edit_adb_device_test_path(adb_device_test) %></td>
-    <td><%= link_to 'Destroy', adb_device_test, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+	<% @adb_device_tests.each do |adb_device_test| %>
+	<tr>
+		<td><%= adb_device_test.name %></td>
+		<td><%= adb_device_test.device.name %></td>
+		<td><%= adb_device_test.upload.name %></td>
+		<td><%= adb_device_test.company.name %></td>
+		<!-- /adb_device_test/start/:id/user/:user_id -->
+		<td><div class="form-actions">
+				<%= link_to 'Start ADB', "/adb_device_test/start/#{adb_device_test.id}/user/#{current_user.id}", method: :post %>
+				</div></td>
+		<td><%= link_to 'Show', adb_device_test %></td>
+		<td><%= link_to 'Edit', edit_adb_device_test_path(adb_device_test) %></td>
+		<td><%= link_to 'Destroy', adb_device_test, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	</tr>
+	<% end %>
 </table>
 
 <br />

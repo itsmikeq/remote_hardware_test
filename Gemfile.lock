@@ -1,8 +1,16 @@
+GIT
+  remote: git://github.com/nicstrong/android-adb.git
+  revision: 236f8ebb6458c5786c10b1ce7a91b57595b12bbb
+  specs:
+    android-adb (0.0.6)
+      Platform (>= 0.4.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
     ADB (0.5.5)
       childprocess (>= 0.3.5)
+    Platform (0.4.0)
     actionmailer (3.2.8)
       actionpack (= 3.2.8)
       mail (~> 2.4.4)
@@ -212,6 +220,7 @@ PLATFORMS
 
 DEPENDENCIES
   ADB
+  android-adb!
   better_errors (>= 0.3.2)
   binding_of_caller (>= 0.6.8)
   bootstrap-sass (>= 2.2.2.0)

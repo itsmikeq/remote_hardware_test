@@ -1,10 +1,13 @@
 require 'simplabs/highlight'
+require 'ADB'
 
 class AdbDeviceTest < ActiveRecord::Base
+  include ADB
   attr_accessible :company_id, :device_id, :name, :script, :upload_id
   belongs_to :company
   belongs_to :device
   belongs_to :upload
+  
   # before_filter :render_body, :only => :show
 
   # def self.render_body(id)
