@@ -33,7 +33,7 @@ gem 'highlight', :require => 'simplabs/highlight'
 gem "coderay"
 gem "rdiscount"
 gem "android-adb", :git => "git://github.com/nicstrong/android-adb.git"
-gem 'ADB'
+gem 'ADB', :git => "git://github.com/memikequinn/ADB.git"
 gem 'tinymce-rails'
 gem 'tinymce-rails-langs'
 gem "nested_form"
