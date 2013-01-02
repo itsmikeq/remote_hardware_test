@@ -5,24 +5,25 @@ Goal: To upload an Android-based OS, load it onto a device via ADB and run any t
 
 Requirements: ADB, Linux or OSX, A device to test with (Jailbroken Android device for example)
 
-Remote Hardware Test
 
-Roadmap: 
-	*Run uploaded files - not just copied and pasted scripts
-  *Add LXC Containers for Multiple ADB sessions per system 
-	*Dynamically create devices based on current attached hardware
+ Roadmap:
+
+  * Run uploaded files, not just copied and pasted scripts
+  * Add LXC Containers for Multiple ADB sessions per system 
+  * Dynamically create devices based on current attached hardware
+  * Create interactive shell for devices
   
   
 "Features:"
 
-  *Create Workflow for adding new devices/OS's/etc (DONE)
-  *Add uploads for the OS's. (DONE)
-  *Add scope for security (See TODOs) (DONE)
-  *Add ADB start/stop(DONE)
-  *Add ADB IO(DONE)
-*Add AJAX responses for uploads (DONE)
-*Add multiple file uploads (APK & OS, etc. for testing) (DONE)
-  **At first the ability to watch results (even delayed), then the full interactive ability (DONE)
+  * Create Workflow for adding new devices/OS's/etc (DONE)
+  * Add uploads for the OS's. (DONE)
+  * Add scope for security (See TODOs) (DONE)
+  * Add ADB start/stop(DONE)
+  * Add ADB IO(DONE)
+  * Add AJAX responses for uploads (DONE)
+  * Add multiple file uploads (APK & OS, etc. for testing) (DONE)
+    * At first the ability to watch results (even delayed)(DONE)
 
   
 
