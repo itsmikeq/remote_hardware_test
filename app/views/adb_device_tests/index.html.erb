@@ -20,7 +20,7 @@
 		<td><%= adb_device_test.company.name %></td>
 		<!-- /adb_device_test/start/:id/user/:user_id -->
 		<td><div class="form-actions">
-				<%= link_to 'Start ADB', "/adb_device_test/start/#{adb_device_test.id}/user/#{current_user.id}", method: :post %>
+				<%= link_to 'Start ADB Test', "/adb_device_test/start/#{adb_device_test.id}/user/#{current_user.id}", method: :post %>
 				</div></td>
 		<td><%= link_to 'Show', adb_device_test %></td>
 		<td><%= link_to 'Edit', edit_adb_device_test_path(adb_device_test) %></td>

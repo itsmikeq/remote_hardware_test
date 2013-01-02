@@ -33,6 +33,7 @@ class DevicesController < ApplicationController
   # GET /devices/new.json
   def new
     @device = Device.new
+    # @uploads = Device.new(params[:device]).upload
     puts "Device Session: #{session.inspect}"
     if session[:follow_workflow] == true
       puts "Following Workflow"
@@ -54,6 +55,7 @@ class DevicesController < ApplicationController
   # POST /devices
   # POST /devices.json
   def create
+    puts "PARAMS: #{params.inspect}"
     if session[:follow_workflow] == true
       # puts "Merging params with session: #{session.inspect}"
       params[:device][:upload_id] = Upload.find(session[:workflow_upload])
@@ -62,7 +64,10 @@ class DevicesController < ApplicationController
       # puts "NOT following workflow in device"
     end
     @device = Device.new(params[:device])
-    
+    @device.uploads.each do |u|
+      u.company_id = @device.company_id
+      u.user_id = current_user.id
+    end
     # puts "Device Params: #{params[:device]}"
     if @device.company.nil?
       @device.company = current_user.company unless current_user.has_role? :admin

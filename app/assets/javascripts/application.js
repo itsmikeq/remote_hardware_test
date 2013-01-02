@@ -15,3 +15,18 @@
 //= require bootstrap
 //= require_tree .
 //= require tinymce-jquery
+//= require jquery_nested_form
+
+// $(document).ready(function() {
+  // $('a#add-another').click(function() {
+    // $('#upload-list li:first').clone().find('input').val('')
+    // .end().appendTo('#upload-list');
+  // });
+// 
+  // $('.delete-upload').live('click', function() {
+    // if ($('#upload-list li').length > 1)
+  // $(this).parent().remove();
+    // else
+  // alert('You need at least one upload.')
+  // });
+// });

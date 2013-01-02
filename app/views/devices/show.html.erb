@@ -10,8 +10,12 @@
   <%= @device.function %>
 </p>
 <p>
-  <b>File:</b>
-  <%= Upload.find(@device.upload_id).name %>
+  <b>File(s):</b>
+  <%@device.uploads.each do |upload|%>
+  <%= 
+  upload.file_file_name
+  %>
+  <%end%>
 </p>
 
 <p>

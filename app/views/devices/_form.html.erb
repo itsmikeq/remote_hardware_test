@@ -1,4 +1,4 @@
-<%= simple_form_for(@device) do |f| %>
+<%= simple_nested_form_for @device, :html => {:multipart => true}  do |f| %>
 <%= f.error_notification %>
 
 <div class="form-inputs">
@@ -13,12 +13,17 @@
 	<%end%>
 	Associated Upload File
 	<br />
-	<%unless current_user.has_role? :admin%>
-	<%= f.select( :upload_id, current_user.company.uploads.collect {|u| [u.name, u.id]}, {:include_blank => 'None'})%>
-	<%else%>
-	
-	<%= f.select( :upload_id, Upload.all.collect {|u| [u.name, u.id]}, {:include_blank => 'None'})%>
-	<%end%>
+<!-- 	<div id="uploads"> -->
+		<%= f.fields_for :uploads do |upload| %>
+			<%= upload.input :file, :input_html => { :class => 'form-' }%>
+			<%= link_to("Remove", "#delete", :class => "delete-upload") %>
+		<% end %>
+		<p><%= f.link_to_add "Add an upload", :uploads %></p>
+<!-- </div> -->
+	<div>
+		<%= submit_tag "Upload" %>
+		<%= link_to "Add Another", "#add", :id => "add-another" %>
+	</div>
 	<%end%>
 </div>
 

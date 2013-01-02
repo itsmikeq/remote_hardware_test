@@ -5,8 +5,9 @@
 	<%= f.input :name %>
 	OS Selection (web URL/Upload)
 	<br>
-	<%= f.input :file_location %>
-	<%= f.input :os, :input_html => { :class => 'form-' } %>
+	<%= # f.input :file_location 
+	%>
+	<%= f.input :file, :input_html => { :class => 'form-' } %>
 	<% if current_user.has_role? :admin %>
 	<p>
 		Company

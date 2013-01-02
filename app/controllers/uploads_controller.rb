@@ -55,6 +55,10 @@ class UploadsController < ApplicationController
     unless current_user.has_role? :admin
       @upload.company_id = current_user.company
     end
+    if params[:company_id].nil?
+      params[:company_id] = current_user.company_id
+    end
+    params[:user_id] = current_user.id
     respond_to do |format|
       if @upload.save
         # puts "Session: #{session.inspect}"

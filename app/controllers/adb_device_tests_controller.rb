@@ -90,7 +90,8 @@ class AdbDeviceTestsController < ApplicationController
     end
     flash[:notice] = "Started.  Available Devices: #{@adb_device_test.devices}"
     # @output = `adb shell #{@adb_device_test.script}`
-    @adb_device_test.shell(@adb_device_test.script)
+    puts "Script: #{ActionView::Base.full_sanitizer.sanitize(@adb_device_test.script)}"
+    @output = @adb_device_test.shell(ActionView::Base.full_sanitizer.sanitize(@adb_device_test.script))
     redirect_to 'command_output' && return
     respond_to do |format|
       format.html { redirect_to adb_device_tests_url }

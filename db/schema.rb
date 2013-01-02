@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121228033228) do
+ActiveRecord::Schema.define(:version => 20130102010845) do
 
   create_table "adb_device_tests", :force => true do |t|
     t.string   "name"
@@ -57,13 +57,15 @@ ActiveRecord::Schema.define(:version => 20121228033228) do
   create_table "uploads", :force => true do |t|
     t.string   "name"
     t.integer  "company_id"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
     t.string   "file_location"
-    t.string   "os_file_name"
-    t.string   "os_content_type"
-    t.integer  "os_file_size"
-    t.datetime "os_updated_at"
+    t.integer  "device_id"
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+    t.integer  "user_id"
   end
 
   add_index "uploads", ["name", "company_id"], :name => "index_uploads_on_name_and_company_id"
